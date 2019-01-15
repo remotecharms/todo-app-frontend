@@ -39,6 +39,10 @@ class TaskEntry extends React.Component {
             taskDescription: description
         });
     }
+    
+    deleteItemFromList () {
+        alert('Item deleted from WishList');
+    }
 
  render () {
      return (

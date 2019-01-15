@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import TaskList from './components/TaskList';
+import TaskEntry from './components/TaskEntry';
+//import TaskCount from './components/TaskCount';
 
 class App extends Component {
+
+  constructor(props) {
+    super (props);
+
+    this.state = {
+      tasks: []
+    };
+
+    this.addTask = this.addTask.bind(this);
+  }
+  
+  //addTask function pushes the task into the array 
+  addTask(task) {
+    let currentListofTasks = this.state.tasks; 
+    currentListofTasks.push(task);
+    this.setState({
+      tasks: currentListofTasks
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+      <Header />
+      <TaskEntry onSaveTaskHandler={this.addTask} />
+      <TaskList tasks={this.state.tasks} />
       </div>
     );
   }
 }
 
 export default App;
+// the container brings bootstrap into this React App
