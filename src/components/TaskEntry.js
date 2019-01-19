@@ -1,7 +1,9 @@
 import React from 'react';
 
 class TaskEntry extends React.Component {
-
+    //every component in React will have a deafult constructor 
+    //constructor is a function, super (props) calls a method in 'React.Component'
+    //ensures that the props are specified. 
     constructor(props) {
         super(props);
         // default this.state to an empty string when the componenet first loads
@@ -9,7 +11,10 @@ class TaskEntry extends React.Component {
             taskDescription: ""
         };
 
-        // Event binding function, which is done in the constructor
+        //Ensures that we bind the correct event handler 
+        //and the function 'onSaveClicked' that is going to handle that event to this component 
+        //and the OnSaveClick method gets fired
+        //Event binding function, which is done in the constructor
         this.onSaveClicked = this.onSaveClicked.bind(this);
         this.onTaskTextFieldUpdated = this.onTaskTextFieldUpdated.bind(this);
     }
@@ -23,9 +28,10 @@ class TaskEntry extends React.Component {
             completed: false
         };
 
+        //before we clear out the taskDescription, we want to save the taskToBeAdded to our array
         this.props.onSaveTaskHandler(taskToBeAdded);
 
-        //clear the text field next to save button
+        //clears the text field next to save button
         this.setState({
             taskDescription: ""
         });
@@ -34,7 +40,7 @@ class TaskEntry extends React.Component {
     //when any key pressed in text field - this is the event handling 
     onTaskTextFieldUpdated(event) {
         const description = event.target.value; 
-
+        //.target is the text box and .value will return what is in the textbox
         this.setState({
             taskDescription: description
         });
@@ -53,9 +59,13 @@ class TaskEntry extends React.Component {
             </div>
                 <div className="col">
                 <input type="button" value="Add" onClick={this.onSaveClicked} />
+        
                 </div>
             </div>
-        //if save button clicked the alert will be fired.
+        //'onClick' is the attachment - if add button clicked the onSaveClicked function will be called
+        //'onChange' everytime a key is pressed in the text field it fires an event
+        // which in turns fires the onTaskTextFieldUpdated function and it will update the TaskDescription
+        // value={this.state.taskDescription} is watching the value of the text box
      ); 
  }
 

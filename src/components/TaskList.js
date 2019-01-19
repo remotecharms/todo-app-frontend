@@ -18,3 +18,7 @@ class TaskList extends React.Component {
 }
 
 export default TaskList; 
+//taskDescription is like specifying the ISBN number passing it down to the task
+// and it choosing to do something with it 
+
+//taskList contains many tasks and each Task has a TaskDescription
