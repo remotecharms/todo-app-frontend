@@ -8,11 +8,18 @@ class Task extends React.Component {
             taskDescription: ""
         };
 
-        this.deleteItemFromList = this.deleteItemFromList.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
     }
 
-    deleteItemFromList() {
-        alert('Congratulations - Item has been deleted from the Wishlist');
+    addTask() {
+        this.props.addTaskHandler(this.props.task);
+    }
+
+    deleteTask() {
+       //console.log('"'+this.props.taskDescription +', id: ' +this.props.task +'" delete action invoked')
+        //alert('Congratulations - Item has been deleted from the Wishlist' + this.props.taskDescription);
+        //this.props.deleteTaskHandler(this.props.id);
+        this.props.deleteTaskHandler(this);
     }
 
  render () {
@@ -25,7 +32,7 @@ class Task extends React.Component {
             <input type="button" className="btn btn-info" value="Done"/>
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-danger" value="Delete" onClick={this.deleteItemFromList} />
+            <input type="button" className="btn btn-danger" value="Delete" onClick={this.deleteTask} />
             </div>
             </div>
 

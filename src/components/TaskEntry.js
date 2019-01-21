@@ -12,15 +12,16 @@ class TaskEntry extends React.Component {
         };
 
         //Ensures that we bind the correct event handler 
-        //and the function 'onSaveClicked' that is going to handle that event to this component 
-        //and the OnSaveClick method gets fired
+        //and the function 'onAddClicked' that is going to handle that event to this component 
+        //and the OnAddClick method gets fired
         //Event binding function, which is done in the constructor
-        this.onSaveClicked = this.onSaveClicked.bind(this);
+        this.onAddClicked = this.onAddClicked.bind(this);
         this.onTaskTextFieldUpdated = this.onTaskTextFieldUpdated.bind(this);
+        //this.onDeleteClicked = this.onDeleteClicked.bind(this);
     }
 
-    // This function executes when the save button is clicked. 
-    onSaveClicked() {
+    // This function executes when the add button is clicked. 
+    onAddClicked() {
 
         const taskToBeAdded = {
             id: (Math.random() * 100),
@@ -29,9 +30,9 @@ class TaskEntry extends React.Component {
         };
 
         //before we clear out the taskDescription, we want to save the taskToBeAdded to our array
-        this.props.onSaveTaskHandler(taskToBeAdded);
+        this.props.onAddTaskHandler(taskToBeAdded);
 
-        //clears the text field next to save button
+        //clears the text field next to add button
         this.setState({
             taskDescription: ""
         });
@@ -46,10 +47,22 @@ class TaskEntry extends React.Component {
         });
     }
     
-    deleteItemFromList () {
-        alert('Item deleted from WishList');
-    }
+    /*This function executes when the add button is clicked. 
+    onDeleteClicked() {
 
+    
+            //before we clear out the taskDescription, we want to save the taskToBeAdded to our array
+            this.props.onDeleteTaskHandler(taskToBeDeleted);
+    
+            //clears the text field next to add button
+            this.setState({
+                taskDescription: ""
+            });
+    
+  deleteTask(key){
+      this.props.delete(key);
+  }
+*/
  render () {
      return (
          // the value of the text box is watching the value of the state - the text box will execute an on text event
@@ -58,11 +71,11 @@ class TaskEntry extends React.Component {
             <input type="text" value={this.state.taskDescription} onChange={this.onTaskTextFieldUpdated} />
             </div>
                 <div className="col">
-                <input type="button" value="Add" onClick={this.onSaveClicked} />
+                <input type="button" value="Add" onClick={this.onAddClicked} />
         
                 </div>
             </div>
-        //'onClick' is the attachment - if add button clicked the onSaveClicked function will be called
+        //'onClick' is the attachment - if add button clicked the onAddClicked function will be called
         //'onChange' everytime a key is pressed in the text field it fires an event
         // which in turns fires the onTaskTextFieldUpdated function and it will update the TaskDescription
         // value={this.state.taskDescription} is watching the value of the text box
