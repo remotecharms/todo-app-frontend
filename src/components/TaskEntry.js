@@ -67,7 +67,7 @@ import React from 'react';
          // the value of the text box is watching the value of the state - the text box will execute an on text event
          <div className="row" style={styles.taskTextField}> 
             <div className= "col" > 
-            <input type="text" value= {this.state.taskDescription} onChange={this.onTaskTextFieldUpdated} size="50"/>
+            <input type="text" value= {this.state.taskDescription} placeholder="Please add items to the list" onChange={this.onTaskTextFieldUpdated} size="50"/>
             </div>
                 <div className="col" style={styles.addButton}> 
                 <input type="button" className="btn btn-secondary" value="Add" onClick={this.onAddClicked}/>
