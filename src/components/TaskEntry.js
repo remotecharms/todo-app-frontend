@@ -1,12 +1,13 @@
 import React from 'react';
 
-class TaskEntry extends React.Component {
-    //every component in React will have a deafult constructor 
+// class TaskEntry extends React.Component {
+    class TaskEntry extends React.Component {
+    //every component in React will have a default constructor 
     //constructor is a function, super (props) calls a method in 'React.Component'
     //ensures that the props are specified. 
     constructor(props) {
         super(props);
-        // default this.state to an empty string when the componenet first loads
+        // default this.state to an empty string when the component first loads
         this.state = {
             taskDescription: ""
         };
@@ -17,12 +18,13 @@ class TaskEntry extends React.Component {
         //Event binding function, which is done in the constructor
         this.onAddClicked = this.onAddClicked.bind(this);
         this.onTaskTextFieldUpdated = this.onTaskTextFieldUpdated.bind(this);
-        //this.onDeleteClicked = this.onDeleteClicked.bind(this);
+        this.onDoneClicked = this.onDoneClicked.bind(this);
+        this.onDeleteClicked = this.onDeleteClicked.bind(this);
     }
 
     // This function executes when the add button is clicked. 
     onAddClicked() {
-
+        console.log('onaddclicked invoked')
         const taskToBeAdded = {
             id: (Math.random() * 100),
             description: this.state.taskDescription,
@@ -36,8 +38,21 @@ class TaskEntry extends React.Component {
         this.setState({
             taskDescription: ""
         });
-
     }
+
+    // This function executes when the done button is clicked.
+    onDoneClicked(taskID) {
+        console.log('ondoneclicked invoked')
+        this.props.onDoneTaskHandler(taskID)
+    };
+
+//    This function executes when the delete button is clicked.
+    onDeleteClicked(taskID) { 
+        console.log('ondeleteclicked invokved')
+        this.props.onDeleteTaskHandler(taskID)
+    };
+
+
     //when any key pressed in text field - this is the event handling 
     onTaskTextFieldUpdated(event) {
         const description = event.target.value; 
@@ -47,32 +62,17 @@ class TaskEntry extends React.Component {
         });
     }
     
-    /*This function executes when the add button is clicked. 
-    onDeleteClicked() {
-
-    
-            //before we clear out the taskDescription, we want to save the taskToBeAdded to our array
-            this.props.onDeleteTaskHandler(taskToBeDeleted);
-    
-            //clears the text field next to add button
-            this.setState({
-                taskDescription: ""
-            });
-    
-  deleteTask(key){
-      this.props.delete(key);
-  }
-*/
  render () {
      return (
          // the value of the text box is watching the value of the state - the text box will execute an on text event
-         <div className="row">
-            <div className= "col"> 
-            <input type="text" value={this.state.taskDescription} onChange={this.onTaskTextFieldUpdated} />
+         <div className="row" style={styles.taskTextField}> 
+            <div className= "col" > 
+            <input type="text" value= {this.state.taskDescription} onChange={this.onTaskTextFieldUpdated} size="50"/>
             </div>
+                <div className="col" style={styles.addButton}> 
+                <input type="button" className="btn btn-secondary" value="Add" onClick={this.onAddClicked}/>
+                </div>
                 <div className="col">
-                <input type="button" value="Add" onClick={this.onAddClicked} />
-        
                 </div>
             </div>
         //'onClick' is the attachment - if add button clicked the onAddClicked function will be called
@@ -84,4 +84,13 @@ class TaskEntry extends React.Component {
 
 }
 
+const styles = {
+    taskTextField: {
+        textAlign: "center",
+    },
+    addButton: {
+        textAlign: "right"
+    }
+}
+// styling the components added in line and a separate css file included 
 export default TaskEntry; 

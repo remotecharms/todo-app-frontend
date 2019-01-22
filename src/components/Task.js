@@ -1,25 +1,41 @@
 import React from 'react';
 
+//class Task extends React.Component {
 class Task extends React.Component {
     constructor(props) {
         super(props);
-        // default this.state to an empty string when the componenet first loads
+        // default this.state to an empty string when the component first loads
         this.state = {
             taskDescription: ""
         };
 
-        this.deleteTask = this.deleteTask.bind(this);
+        this.dothedeleteTask = this.dothedeleteTask.bind(this);
+        this.dothedoneTask = this.dothedoneTask.bind(this);
     }
 
-    addTask() {
+    dotheaddTask() {
+        console.log('addtask invoked')
         this.props.addTaskHandler(this.props.task);
     }
 
-    deleteTask() {
+    dothedeleteTask() {
+        console.log('deletetask invoked')
+        this.props.dothedeleteTask(this.props.task.id);
        //console.log('"'+this.props.taskDescription +', id: ' +this.props.task +'" delete action invoked')
         //alert('Congratulations - Item has been deleted from the Wishlist' + this.props.taskDescription);
         //this.props.deleteTaskHandler(this.props.id);
-        this.props.deleteTaskHandler(this);
+        
+        /*if (this.state.taskDescription > 1){
+            let newTask = this.state.taskDescription -1;
+            this.setState({taskDescription: newTask});
+        }*/
+    }
+    dothedoneTask(){
+        /*
+        if (this.state.taskDescription < 5){
+            let newTask = this.state.taskDescription + 1;
+            this.setState({taskDescription: newTask});
+        }*/
     }
 
  render () {
@@ -29,10 +45,10 @@ class Task extends React.Component {
                 {this.props.taskDescription}
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-info" value="Done"/>
+            <input type="button" className="btn btn-info" onClick={this.dothedoneTask} value="Done"/>
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-danger" value="Delete" onClick={this.deleteTask} />
+            <input type="button" className="btn btn-danger" onClick={this.dothedeleteTask} value="Delete"/>
             </div>
             </div>
 

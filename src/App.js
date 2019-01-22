@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import TaskEntry from './components/TaskEntry';
-
+import Task from './components/Task';
 
 class App extends Component {
 
@@ -14,10 +14,11 @@ class App extends Component {
     this.state = {
       tasks: []
     };
-    
+      
     //Event handler
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.doneTask = this.doneTask.bind(this);
   }
   
   //addTask function pushes the JSON object which looks like a task into the array 
@@ -29,7 +30,13 @@ class App extends Component {
     });
   }
 
- /* countingTasksInList (task) {
+  deleteTask(taskID) {
+    this.setState ({
+      tasks: this.state.tasks.filter(tasks => tasks.taskID !== taskID)
+        });
+  }
+
+  /* countingTasksInList (task) {
     let currentList = this.state.tasks;
     let taskAddedToList = currentList.filter((taskInList) => taskInList.i === task.i).length > 0;
     if(taskAddedToList) {
@@ -51,8 +58,8 @@ class App extends Component {
 
     this.setState({tasks: currentList});
   }
-*/
-  deleteTask(key){
+
+  /*deleteTask(key){
     let filteredTasks= this.state.tasks.filter(function(task){
       return (task.key !== key)
     });
@@ -69,8 +76,9 @@ class App extends Component {
     this.setState({tasks: existingTask})
     console.log(JSON.stringify(existingTask)); 
   }
+*/
 
-
+/*
 deleteTask(id) {
   let currentListofTasks = this.state.tasks; 
   console.log()
@@ -91,7 +99,20 @@ deleteTask(id) {
     tasks: currentListofTasks
   });
 }
-  */  
+*/
+
+ /*
+ deleteTask() {
+  //console.log('"'+this.props.taskDescription +', id: ' +this.props.task +'" delete action invoked')
+   //alert('Congratulations - Item has been deleted from the Wishlist' + this.props.taskDescription);
+   //this.props.deleteTaskHandler(this.props.id);
+   this.props.onDeleteTaskHandler();
+}
+*/
+doneTask(){
+   this.props.onDoneTaskHandler();
+}
+
   render() {
     return (
       <div className="container">
@@ -106,3 +127,4 @@ deleteTask(id) {
 export default App;
 // <TaskList tasks={this.state.tasks} passes the list of tasks from the array above on to the TaskList
 // the container brings bootstrap into this React App
+//<Task taskDescription= {this.state.taskDescription} onDeleteTaskHandler={this.deleteTask} onDoneTaskHandler={this.doneTask} />

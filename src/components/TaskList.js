@@ -9,8 +9,23 @@ class TaskList extends React.Component {
          <div>
             {
                 this.props.tasks.map((task, i) =>
-                    <Task taskDescription={task.description} key={i} />
+//                    <Task taskDescription={task.description} key={i} showAddButton={false} showDeleteButton={true} deleteTaskHandler={this.props.deleteTaskHandler}/>
+                    <Task 
+                    taskDescription={task.description} 
+                    key={i} // key={this.props.task.id} ?
+                    showAddButton={false}
+                    showDeleteButton={true}
+                    deleteTaskHandler={this.deleteTaskHandler}/>
                 )
+                //map over array called tasks in app.js, each item in the array is given the
+                //name 'task' - which is a variable 
+                //then the 'taskDecription' which is each item and 
+                //they are given the unique key of 'i'
+                //'map' function gives you an index which meant that 'key' = 0,1,2 etc
+                //'map' goes to each item in the array, it allocates each item in the array
+                //to a variable which is called 'task'
+                //in React for every element you render if it's in a loop, it has to be given a key
+                //
             }
          </div>
      ); 
