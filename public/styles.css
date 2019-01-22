@@ -1,0 +1,36 @@
+@media only screen and (max-width: 600px){
+    body{
+        background-color: white; 
+    }
+    h1 {
+        display: none;
+        color: #ff33ff;
+    }
+}
+
+h1{
+    color: #ffad60;
+    font-size: 50px;
+}
+#taskTable {
+    background-color: #ea44e3; 
+    margin: auto;
+}
+.taskItem {
+   color: white;  
+}
+body {
+    text-align: center;
+  font-family: Helvetica;
+  justify-content: center;
+  background-image: url("clouds.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+#container {
+    display: flex;
+    justify-content: flex;
+}
+
