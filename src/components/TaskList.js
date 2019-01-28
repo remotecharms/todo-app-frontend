@@ -8,15 +8,12 @@ class TaskList extends React.Component {
      return (
          <div>
             {
-                this.props.tasks.map((task, i) =>
-//                    <Task taskDescription={task.description} key={i} showAddButton={false} showDeleteButton={true} deleteTaskHandler={this.props.deleteTaskHandler}/>
-                    <Task 
-                    taskDescription={task.description} 
-                    key={i} // key={this.props.task.id} ?
-                    showAddButton={false}
-                    showDeleteButton={true}
-                    deleteTaskHandler={this.deleteTaskHandler}/>
-                )
+                 this.props.tasks.map((task, i) =>
+                <Task taskDescription={task.description} deleteTask={this.props.deleteTask}
+                key={i} id={i}/> 
+                //showAddButton={false}
+                //showDeleteButton={true}
+                )                
                 //map over array called tasks in app.js, each item in the array is given the
                 //name 'task' - which is a variable 
                 //then the 'taskDecription' which is each item and 

@@ -9,34 +9,29 @@ class Task extends React.Component {
             taskDescription: ""
         };
 
-        this.dothedeleteTask = this.dothedeleteTask.bind(this);
-        this.dothedoneTask = this.dothedoneTask.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
+        /*this.dothedoneTask = this.dothedoneTask.bind(this);
+        this.onDoneClicked = this.onDoneClicked.bind(this);
+        */
     }
 
-    dotheaddTask() {
-        console.log('addtask invoked')
-        this.props.addTaskHandler(this.props.task);
+    deleteTask(id) {
+        this.props.deleteTask(this.props.id);
     }
-
-    dothedeleteTask() {
-        console.log('deletetask invoked')
-        this.props.dothedeleteTask(this.props.task.id);
-       //console.log('"'+this.props.taskDescription +', id: ' +this.props.task +'" delete action invoked')
-        //alert('Congratulations - Item has been deleted from the Wishlist' + this.props.taskDescription);
-        //this.props.deleteTaskHandler(this.props.id);
+   
+    /*dothedoneTask(){
         
-        /*if (this.state.taskDescription > 1){
-            let newTask = this.state.taskDescription -1;
-            this.setState({taskDescription: newTask});
-        }*/
-    }
-    dothedoneTask(){
-        /*
         if (this.state.taskDescription < 5){
             let newTask = this.state.taskDescription + 1;
             this.setState({taskDescription: newTask});
         }*/
-    }
+
+        // This function executes when the done button is clicked.
+        /*onDoneClicked(taskID) {
+            console.log('ondoneclicked invoked')
+            this.props.onDoneTaskHandler(taskID)
+        };
+*/
 
  render () {
      return (
@@ -48,7 +43,7 @@ class Task extends React.Component {
             <input type="button" className="btn btn-info" onClick={this.dothedoneTask} value="Done"/>
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-danger" onClick={this.dothedeleteTask} value="Delete"/>
+            <input type="button" className="btn btn-danger" onClick={this.deleteTask} value="Delete"/>
             </div>
             </div>
 

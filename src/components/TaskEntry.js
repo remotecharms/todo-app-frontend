@@ -18,8 +18,6 @@ import React from 'react';
         //Event binding function, which is done in the constructor
         this.onAddClicked = this.onAddClicked.bind(this);
         this.onTaskTextFieldUpdated = this.onTaskTextFieldUpdated.bind(this);
-        this.onDoneClicked = this.onDoneClicked.bind(this);
-        this.onDeleteClicked = this.onDeleteClicked.bind(this);
     }
 
     // This function executes when the add button is clicked. 
@@ -39,20 +37,7 @@ import React from 'react';
             taskDescription: ""
         });
     }
-
-    // This function executes when the done button is clicked.
-    onDoneClicked(taskID) {
-        console.log('ondoneclicked invoked')
-        this.props.onDoneTaskHandler(taskID)
-    };
-
-//    This function executes when the delete button is clicked.
-    onDeleteClicked(taskID) { 
-        console.log('ondeleteclicked invokved')
-        this.props.onDeleteTaskHandler(taskID)
-    };
-
-
+    
     //when any key pressed in text field - this is the event handling 
     onTaskTextFieldUpdated(event) {
         const description = event.target.value; 

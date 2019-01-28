@@ -18,7 +18,6 @@ class App extends Component {
     //Event handler
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.doneTask = this.doneTask.bind(this);
   }
   
   //addTask function pushes the JSON object which looks like a task into the array 
@@ -30,10 +29,14 @@ class App extends Component {
     });
   }
 
-  deleteTask(taskID) {
-    this.setState ({
-      tasks: this.state.tasks.filter(tasks => tasks.taskID !== taskID)
-        });
+//delete Task function uses the splice method to return the removed items from the array
+  deleteTask (id) {
+    console.log (id);
+    let currentListofTasks = this.state.tasks; 
+    currentListofTasks.splice(id,1);
+    this.setState({
+      tasks: currentListofTasks
+    });
   }
 
   /* countingTasksInList (task) {
@@ -59,66 +62,18 @@ class App extends Component {
     this.setState({tasks: currentList});
   }
 
-  /*deleteTask(key){
-    let filteredTasks= this.state.tasks.filter(function(task){
-      return (task.key !== key)
-    });
-    this.setState({
-      tasks: filteredTasks
-    })
-  }
-  
-/*  deleteTask(id) {
-    let currentList = this.state.tasks; 
-    let existingTask = currentList.filter((taskInList) => taskInList.id !==id);
-    console.log('existingTask: '+ JSON.stringify(existingTask))
-    console.log('taskInList.id: '+taskInList.id)
-    this.setState({tasks: existingTask})
-    console.log(JSON.stringify(existingTask)); 
-  }
-*/
-
 /*
-deleteTask(id) {
-  let currentListofTasks = this.state.tasks; 
-  console.log()
-  console.log('this.state.tasks: '+JSON.stringify(this.state.tasks))
-  // should be using splice instead of filter... how to get ID for the task being deleted?
-  let existingList = currentListofTasks.filter((taskInList) => taskInList.id === id) [0];
-  console.log('before filter: '+JSON.stringify(currentListofTasks))
-  if (existingList.taskDescription === 1) {
-    let newList = currentListofTasks.filter((task) => currentListofTasks.id !== id);
-    this.setState({tasks: newList});
-  }
-  else {
-    existingList -=1;
-    this.setState({tasks: currentListofTasks});
-  }
-  console.log('after filter: '+JSON.stringify(currentListofTasks))
-  this.setState({
-    tasks: currentListofTasks
-  });
-}
-*/
 
- /*
- deleteTask() {
-  //console.log('"'+this.props.taskDescription +', id: ' +this.props.task +'" delete action invoked')
-   //alert('Congratulations - Item has been deleted from the Wishlist' + this.props.taskDescription);
-   //this.props.deleteTaskHandler(this.props.id);
-   this.props.onDeleteTaskHandler();
-}
-*/
 doneTask(){
    this.props.onDoneTaskHandler();
 }
-
+*/
   render() {
     return (
       <div className="container">
       <Header />
       <TaskEntry onAddTaskHandler={this.addTask} />
-      <TaskList tasks={this.state.tasks} deleteTaskHandler={this.deleteTask} /> 
+      <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} /> 
       </div>
     );
   }
