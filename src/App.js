@@ -18,6 +18,7 @@ class App extends Component {
     //Event handler
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.doneTask = this.doneTask.bind(this);
   }
   
   //addTask function pushes the JSON object which looks like a task into the array 
@@ -39,6 +40,15 @@ class App extends Component {
     });
   }
 
+  doneTask (id) {
+    console.log (id);
+    let currentListofTasks = this.state.tasks; 
+    currentListofTasks.splice(id,1);
+    this.setState({
+      tasks: currentListofTasks
+    });
+
+  }
   /* countingTasksInList (task) {
     let currentList = this.state.tasks;
     let taskAddedToList = currentList.filter((taskInList) => taskInList.i === task.i).length > 0;
@@ -73,7 +83,7 @@ doneTask(){
       <div className="container">
       <Header />
       <TaskEntry onAddTaskHandler={this.addTask} />
-      <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} /> 
+      <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} doneTask={this.doneTask}/> 
       </div>
     );
   }
