@@ -43,7 +43,7 @@ class Task extends React.Component {
      return (
          <div className="row" style={styles.taskRow}>
             <div className="col"> 
-                {this.props.taskDescription}
+                {this.props.taskId} - {this.props.taskDescription}
             </div>
             <div className="col"> 
             <input type="button" className="btn btn-info" onClick={this.doneTask} value="Done"/>

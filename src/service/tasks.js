@@ -9,7 +9,7 @@ const TasksService = {
 
     async saveTask(task){
         let res = await axios.post("https://ej7jzhx1ja.execute-api.eu-west-2.amazonaws.com/dev/tasks", task);
-        return res;
+        return res.data;
     }
 };
 //this is a service class - the above is a service 

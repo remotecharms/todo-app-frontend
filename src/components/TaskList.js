@@ -9,7 +9,7 @@ class TaskList extends React.Component {
          <div>
             {
                  this.props.tasks.map((task, i) =>
-                <Task taskDescription={task.description} deleteTask={this.props.deleteTask} doneTask={this.props.doneTask}
+                <Task taskId={task.taskId} taskDescription={task.description} deleteTask={this.props.deleteTask} doneTask={this.props.doneTask}
                 key={i} id={i}/> 
                 //showAddButton={false}
                 //showDeleteButton={true}
