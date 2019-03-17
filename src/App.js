@@ -41,12 +41,12 @@ class App extends Component {
   }
 
 //delete Task function uses the splice method to return the removed items from the array
-  deleteTask (id) {
-    console.log (id);
-    let currentListofTasks = this.state.tasks; 
-    currentListofTasks.splice(id,1);
+  async deleteTask (taskId) {
+    await TasksService.deleteTask(taskId);
+    let currentListOfTasks = this.state.tasks; 
+    let updatedListOfTasks = currentListOfTasks.filter((task) => task.taskId !== taskId);
     this.setState({
-      tasks: currentListofTasks
+      tasks: updatedListOfTasks
     });
   }
 

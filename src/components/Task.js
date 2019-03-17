@@ -16,9 +16,8 @@ class Task extends React.Component {
         */
     }
 
-    deleteTask(id) {
-        this.props.deleteTask(this.props.id);
-        this.doneTask = this.doneTask.bind(this);
+    deleteTask() {
+        this.props.deleteTask(this.props.taskId);
     }
 
     doneTask(id) {
