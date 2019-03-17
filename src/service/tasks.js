@@ -13,12 +13,12 @@ const TasksService = {
     },
 
     async deleteTask(taskId){
-        let res = await axios.delete("https://ej7jzhx1ja.execute-api.eu-west-2.amazonaws.com/dev/tasks/{taskId}" + taskId);
+        let res = await axios.delete("https://ej7jzhx1ja.execute-api.eu-west-2.amazonaws.com/dev/tasks/" + taskId);
         return res.data;
     },
     
     async doneTask(taskId){
-        let res = await axios.put("https://ej7jzhx1ja.execute-api.eu-west-2.amazonaws.com/dev/tasks/{taskId}" + taskId);
+        let res = await axios.put("https://ej7jzhx1ja.execute-api.eu-west-2.amazonaws.com/dev/tasks/" + taskId);
         return res.data;
     }
 }

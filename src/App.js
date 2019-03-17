@@ -63,7 +63,9 @@ class App extends Component {
       <div className="container">
       <Header />
       <TaskEntry onAddTaskHandler={this.addTask} />
-      <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} doneTask={this.doneTask}/> 
+      <TaskList tasks={this.state.tasks} 
+      deleteTaskHandler={this.deleteTask} 
+      doneTaskHandler={this.doneTask}/> 
       </div>
     );
   }

@@ -9,16 +9,16 @@ class Task extends React.Component {
             taskDescription: ""
         };
 
-        this.deleteTask = this.deleteTask.bind(this);
-        this.doneTask = this.doneTask.bind(this);
+        this.deleteTaskClicked = this.deleteTaskClicked.bind(this);
+        this.doneTaskCLicked = this.doneTaskClicked.bind(this);
     }
 
-    deleteTask() {
-        this.props.deleteTask(this.props.taskId);
+    deleteTaskClicked() {
+        this.props.deleteTaskHandler(this.props.taskId);
     }
 
-    doneTask() {
-        this.props.doneTask(this.props.taskId);
+    doneTaskClicked() {
+        this.props.doneTaskHandler(this.props.taskId);
     }
    
 
@@ -29,10 +29,10 @@ class Task extends React.Component {
                {this.props.taskDescription}
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-info" onClick={this.doneTask} value="Done"/>
+            <input type="button" className="btn btn-info" onClick={this.doneTaskClicked} value="Done"/>
             </div>
             <div className="col"> 
-            <input type="button" className="btn btn-danger" onClick={this.deleteTask} value="Delete"/>
+            <input type="button" className="btn btn-danger" onClick={this.deleteTaskClicked} value="Delete"/>
             </div>
             </div>
 
