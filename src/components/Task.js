@@ -11,38 +11,22 @@ class Task extends React.Component {
 
         this.deleteTask = this.deleteTask.bind(this);
         this.doneTask = this.doneTask.bind(this);
-        /*this.dothedoneTask = this.dothedoneTask.bind(this);
-        this.onDoneClicked = this.onDoneClicked.bind(this);
-        */
     }
 
     deleteTask() {
         this.props.deleteTask(this.props.taskId);
     }
 
-    doneTask(id) {
-        this.props.doneTask(this.props.id);
+    doneTask() {
+        this.props.doneTask(this.props.taskId);
     }
    
-    /*dothedoneTask(){
-        
-        if (this.state.taskDescription < 5){
-            let newTask = this.state.taskDescription + 1;
-            this.setState({taskDescription: newTask});
-        }*/
-
-        // This function executes when the done button is clicked.
-        /*onDoneClicked(taskID) {
-            console.log('ondoneclicked invoked')
-            this.props.onDoneTaskHandler(taskID)
-        };
-*/
 
  render () {
      return (
          <div className="row" style={styles.taskRow}>
             <div className="col"> 
-                {this.props.taskId} - {this.props.taskDescription}
+               {this.props.taskDescription}
             </div>
             <div className="col"> 
             <input type="button" className="btn btn-info" onClick={this.doneTask} value="Done"/>

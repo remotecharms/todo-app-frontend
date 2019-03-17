@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import TaskEntry from './components/TaskEntry';
-import Task from './components/Task';
 import TasksService from './service/tasks';
-
 class App extends Component {
 
   // tasks array is default to being empty, when the app first runs
@@ -40,7 +38,7 @@ class App extends Component {
     });
   }
 
-//delete Task function uses the splice method to return the removed items from the array
+//delete Task function uses the filter method to return the removed items from the array
   async deleteTask (taskId) {
     await TasksService.deleteTask(taskId);
     let currentListOfTasks = this.state.tasks; 
@@ -50,44 +48,16 @@ class App extends Component {
     });
   }
 
-  doneTask (id) {
-    console.log (id);
-    let currentListofTasks = this.state.tasks; 
-    currentListofTasks.splice(id,1);
+  async doneTask (taskId) {
+    await TasksService.doneTask(taskId);
+    let currentListOfTasks = this.state.tasks; 
+    let awaitingTaskDone = currentListOfTasks.find((task) => task.taskId === taskId);
+    awaitingTaskDone.Completed = true
     this.setState({
-      tasks: currentListofTasks
+      tasks: currentListOfTasks
     });
-
-  }
-  /* countingTasksInList (task) {
-    let currentList = this.state.tasks;
-    let taskAddedToList = currentList.filter((taskInList) => taskInList.i === task.i).length > 0;
-    if(taskAddedToList) {
-      let existingList = this.state.tasks;
-      for(let taskInList of existingList) {
-        if(taskInList.id === task.i ) {
-          taskInList.items += 1;
-        }
-      }
-
-      this.setState({tasks: existingList});
-    }
-    else {
-      let taskToBeAdded = {
-        task:1
-      };
-      currentList.push(taskToBeAdded);
-    }
-
-    this.setState({tasks: currentList});
   }
 
-/*
-
-doneTask(){
-   this.props.onDoneTaskHandler();
-}
-*/
   render() {
     return (
       <div className="container">
