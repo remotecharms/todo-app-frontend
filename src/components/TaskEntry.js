@@ -24,7 +24,6 @@ import React from 'react';
     onAddClicked() {
         console.log('onaddclicked invoked')
         const taskToBeAdded = {
-            id: (Math.random() * 100),
             description: this.state.taskDescription,
             completed: false
         };

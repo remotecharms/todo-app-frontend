@@ -3,6 +3,7 @@ import Header from './components/Header';
 import TaskList from './components/TaskList';
 import TaskEntry from './components/TaskEntry';
 import Task from './components/Task';
+import TasksService from './service/tasks';
 
 class App extends Component {
 
@@ -20,9 +21,18 @@ class App extends Component {
     this.deleteTask = this.deleteTask.bind(this);
     this.doneTask = this.doneTask.bind(this);
   }
+
+  async componentDidMount() {
+    const tasks = await TasksService.getTasks();
+    console.log(tasks);
+    this.setState({tasks: tasks});
+}
   
   //addTask function pushes the JSON object which looks like a task into the array 
-  addTask(task) {
+  async addTask(task) {
+
+    const response = await TasksService.saveTask(task);
+    task.taskId = response.insertId;
     let currentListofTasks = this.state.tasks; 
     currentListofTasks.push(task);
     this.setState({
